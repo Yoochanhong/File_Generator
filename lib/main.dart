@@ -31,6 +31,30 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: const Text("파일 생성기"),
       ),
+      body: Center(
+        child: Column(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.grey[100],
+                borderRadius: const BorderRadius.all(Radius.circular(8)),
+                border: Border.all(width: 1, color: Colors.black12),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 15.0),
+                child: TextField(
+                  maxLines: null,
+                  keyboardType: TextInputType.multiline,
+                  controller: controller,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
