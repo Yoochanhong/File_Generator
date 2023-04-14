@@ -30,6 +30,9 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("파일 생성기"),
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.save)),
+        ],
       ),
       body: Center(
         child: Column(
