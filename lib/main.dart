@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
+import 'dart:io';
 
 void main() => runApp(const MyApp());
 
@@ -23,7 +24,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  TextEditingController controller = TextEditingController();
+  TextEditingController inputController = TextEditingController();
+  TextEditingController pathController = TextEditingController();
+
+  Future<void> _saveTextToFile(String path) async {
+    final text = inputController.text;
+    final bytes = text.codeUnits;
+    final file = File('$path/my_file.c');
+    await file.writeAsBytes(bytes);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +40,11 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: const Text("파일 생성기"),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.save)),
+          IconButton(
+              onPressed: () {
+                _saveTextToFile(pathController.text);
+              },
+              icon: const Icon(Icons.save)),
         ],
       ),
       body: Center(
@@ -48,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: TextField(
                   maxLines: null,
                   keyboardType: TextInputType.multiline,
-                  controller: controller,
+                  controller: inputController,
                   decoration: const InputDecoration(
                     border: InputBorder.none,
                   ),
