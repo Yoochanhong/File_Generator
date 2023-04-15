@@ -59,6 +59,23 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 15.0),
                 child: TextField(
+                  maxLines: 1,
+                  controller: pathController,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.grey[100],
+                borderRadius: const BorderRadius.all(Radius.circular(8)),
+                border: Border.all(width: 1, color: Colors.black12),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 15.0),
+                child: TextField(
                   maxLines: null,
                   keyboardType: TextInputType.multiline,
                   controller: inputController,
